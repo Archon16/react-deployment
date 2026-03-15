@@ -22,7 +22,10 @@ pipeline {
 
         stage('Push to Dev') {
             when {
-                branch 'dev'
+	    	anyOf {
+                	branch 'dev'
+			branch 'origin/dev'
+		}
             }
             steps {
                 withCredentials([usernamePassword(
@@ -41,7 +44,10 @@ pipeline {
 
         stage('Push to Prod') {
             when {
-                branch 'master'
+	    	anyOf {
+                	branch 'main'
+			branch 'origin/main'
+		}
             }
             steps {
                 withCredentials([usernamePassword(
