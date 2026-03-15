@@ -33,6 +33,8 @@ pipeline {
                     usernameVariable: 'USER',
                     passwordVariable: 'PASS'
                 )]) {
+		    echo "Current branch: ${env.BRANCH_NAME}"
+		    echo "Starting push to dev..."
                     sh '''
                         echo $PASS | docker login -u $USER --password-stdin
                         docker tag devops-app:latest $DEV_IMAGE:latest
@@ -55,6 +57,8 @@ pipeline {
                     usernameVariable: 'USER',
                     passwordVariable: 'PASS'
                 )]) {
+		    echo "Current branch: ${env.BRANCH_NAME}"
+                    echo "Starting push to dev..."
                     sh '''
                         echo $PASS | docker login -u $USER --password-stdin
                         docker tag devops-app:latest $PROD_IMAGE:latest
