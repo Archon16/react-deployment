@@ -20,6 +20,12 @@ pipeline {
             }
         }
 
+	stage('Debug') {
+    	    steps {
+        	sh 'echo "Branch name is: ${BRANCH_NAME}"'
+   	    }
+	}
+
         stage('Push to Dev') {
             when {
 	    	anyOf {
